@@ -42,11 +42,7 @@ def create_service_lb():
 
 
 def update_lb(api, svc):
-    svc.spec.external_i_ps =  ["10.0.0.1"]
-    ingress = client.V1LoadBalancerIngress(ip="123.123.123.123", hostname="dims.dk")
-    lb = client.V1LoadBalancerStatus([ingress])
-    service_status = client.V1ServiceStatus(lb)
-    svc.status = service_status
+    svc.spec.external_i_ps =  ["10.0.0.3"]
     api.patch_namespaced_service(namespace="default",body=svc, name=svc.metadata.name)
 
 
